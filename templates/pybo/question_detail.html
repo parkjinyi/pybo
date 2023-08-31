@@ -137,13 +137,6 @@
 
 
 
-
-
-
-
-
-
-
     <form action = "{% url 'pybo:answer_create' question.id %}" method = "post" class = "my-3">
         {% csrf_token %}
         {% if form.errors %}
@@ -162,6 +155,13 @@
         <input type="submit" value="답변등록" class="btn btn-primary">
     </form>
 </div>
+
+<!-- page만 GET으로 요청하는 searchForm 추가-->
+<form id="searchForm" method="get" action="{% url 'pybo:detail' question.id %}">
+    <input type="hidden" id="page" name="page" value="{{ page }}">
+</form>
+<!-- 폼 추가 끝-->
+
 {% endblock %}
 {% block script %}
 <script type='text/javascript'>
